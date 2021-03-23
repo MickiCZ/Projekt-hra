@@ -1,5 +1,6 @@
 from random import randrange
 import random
+import Funkce.py
 jmeno_hrdiny = input("Zadej jméno hrdiny: ")
 penize = 0
 zivoty = randrange(10, 31)
@@ -11,16 +12,7 @@ medved = ["Medvěd", 8, 2, 15]
 nepritel = [krysa, bandita, medved]
 
 
-def boj(ut, ob, utN, obN):
-    var_ob_player = ob + randrange(0, 6)
-    var_ob_enemy = obN + randrange(0,6)
-    zraneni_player = utN - var_ob_player #Zranění které dostal hrdina od nepřítele
-    if zraneni_player < 0:
-        zraneni_player = 0
-    zraneni_enemy = ut - var_ob_enemy #Zranění které dostal nepřítel od hrdiny
-    if zraneni_enemy < 0:
-        zraneni_enemy = 0
-    return (zraneni_enemy, zraneni_player)
+
 
 
 print(f"""Tvůj hrdina se jmenuje {jmeno_hrdiny}, má {zivoty} životů a {penize} penez.
