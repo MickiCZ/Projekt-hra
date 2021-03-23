@@ -1,3 +1,4 @@
+from random import randrange
 def boj(ut, ob, utN, obN):
     var_ob_player = ob + randrange(0, 6)
     var_ob_enemy = obN + randrange(0,6)

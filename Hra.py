@@ -1,6 +1,6 @@
 from random import randrange
 import random
-import Funkce.py
+import Funkce
 jmeno_hrdiny = input("Zadej jméno hrdiny: ")
 penize = 0
 zivoty = randrange(10, 31)
@@ -28,7 +28,7 @@ elif cesta == "arena":
     zivoty_nepritel = get_nepritel[3]
     while zivoty > 0:
         if zivoty_nepritel > 0:
-            zraneni_enemy, zraneni_player = boj(utok, obrana, get_nepritel[1], get_nepritel[2])
+            zraneni_enemy, zraneni_player = Funkce.boj(utok, obrana, get_nepritel[1], get_nepritel[2])
             print(f"Zranění nepřítele je {zraneni_enemy}")
             print(f"Zranění hráče je {zraneni_player}")
             zivoty = zivoty - zraneni_player
