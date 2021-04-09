@@ -1,6 +1,7 @@
 utok = 0
 obrana = 0
 penize = 1000
+inventory = []
 
 #shop list - 0. name, 1. dmg 2. price
 wooden_sword = ["Wooden sword", 5, 100]
@@ -14,18 +15,73 @@ for i in shop_list:
     print("Zbraň: {} dmg: +{} cena: {}".format(i[0], i[1], i[2]))
 
 #Prodej
-select_item = int(input ("Co si z toho koupíš? (napiš číslo od 0 do 4) "))
-if select_item == 0:
-    print(f"Koupil sis {shop_list[select_item][0]} ")
-elif select_item == 1:
-    print(f"Koupil sis {shop_list[select_item][0]} ")
-elif select_item == 2:
-    print(f"Koupil sis {shop_list[select_item][0]} ")
-elif select_item == 3:
-    print(f"Koupil sis {shop_list[select_item][0]} ")
-elif select_item == 4:
-    print(f"Koupil sis {shop_list[select_item][0]} ")
-else:
-    print("Zadal jsi špatné číslo, které není v seznamu!")
+def buy_in_shop():
+    global utok
+    global penize
+    print()
+    select_item = int(input ("Co si z toho koupíš? (napiš číslo od 0 do 4) "))
+    #kontrola zdali má peníze
+    if select_item > len(shop_list):
+        "Toto není v nabídce!"
+        buy_in_shop()
+    if penize >= shop_list[select_item][2]:
+        if select_item == 0:
+            print(f"Koupil sis {shop_list[select_item][0]} ")
+            utok = utok + shop_list[select_item][1]
+            penize = penize - shop_list[select_item][2]
+            inventory.append(shop_list[select_item])
+            shop_list.pop(select_item)
+            print(penize)
+            print(utok)
+            print(shop_list)
+            print(inventory)
+        elif select_item == 1:
+            print(f"Koupil sis {shop_list[select_item][0]} ")
+            utok = utok + shop_list[select_item][1]
+            penize = penize - shop_list[select_item][2]
+            inventory.append(shop_list[select_item])
+            shop_list.pop(select_item)
+            print(penize)
+            print(utok)
+            print(shop_list)
+            print(inventory)
+        elif select_item == 2:
+            print(f"Koupil sis {shop_list[select_item][0]} ")
+            utok = utok + shop_list[select_item][1]
+            penize = penize - shop_list[select_item][2]
+            inventory.append(shop_list[select_item])
+            shop_list.pop(select_item)
+            print(penize)
+            print(utok)
+            print(shop_list)
+            print(inventory)
+        elif select_item == 3:
+            print(f"Koupil sis {shop_list[select_item][0]} ")
+            utok = utok + shop_list[select_item][1]
+            penize = penize - shop_list[select_item][2]
+            inventory.append(shop_list[select_item])
+            shop_list.pop(select_item)
+            print(penize)
+            print(utok)
+            print(shop_list)
+            print(inventory)
+        elif select_item == 4:
+            print(f"Koupil sis {shop_list[select_item][0]} ")
+            utok = utok + shop_list[select_item][1]
+            penize = penize - shop_list[select_item][2]
+            inventory.append(shop_list[select_item])
+            shop_list.pop(select_item)
+            print(penize)
+            print(utok)
+            print(shop_list)
+            print(inventory)
+
+    else:
+        print("Nemáš dostatek peněz!")
+        buy_in_shop()
+
+buy_in_shop()
+print(utok)
+print(penize)
 #while = True:
  #   print("Vešel jsi do obchodu")
