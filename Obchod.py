@@ -13,6 +13,19 @@ print("V našem obchodě máme následující: ")
 for i in shop_list:
     print("Zbraň: {} dmg: +{} cena: {}".format(i[0], i[1], i[2]))
 
-
+#Prodej
+select_item = int(input ("Co si z toho koupíš? (napiš číslo od 0 do 4) "))
+if select_item == 0:
+    print(f"Koupil sis {shop_list[select_item][0]} ")
+elif select_item == 1:
+    print(f"Koupil sis {shop_list[select_item][0]} ")
+elif select_item == 2:
+    print(f"Koupil sis {shop_list[select_item][0]} ")
+elif select_item == 3:
+    print(f"Koupil sis {shop_list[select_item][0]} ")
+elif select_item == 4:
+    print(f"Koupil sis {shop_list[select_item][0]} ")
+else:
+    print("Zadal jsi špatné číslo, které není v seznamu!")
 #while = True:
  #   print("Vešel jsi do obchodu")
