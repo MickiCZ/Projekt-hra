@@ -20,6 +20,7 @@ Nachází se ve městě Lotaru. Je zde kovárna a aréna""")
 cesta = input("Kam chceš jít? (napiš Kovárna nebo arena) ")
 if cesta == "Kovárna":
     print("Vešel jsi do kovárny. WIP")
+    
 elif cesta == "arena":
     print("Vítej v aréně!")
     get_nepritel = random.choice(nepritel)
