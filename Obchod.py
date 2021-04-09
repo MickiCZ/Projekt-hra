@@ -10,14 +10,16 @@ iron_sword = ["Iron sword", 15, 500]
 katana = ["Katana", 20, 1000]
 axe = ["Axe", 30, 2000]
 shop_list = [wooden_sword, rusty_sword, iron_sword, katana, axe]
-print("V našem obchodě máme následující: ")
-for i in shop_list:
-    print("Zbraň: {} dmg: +{} cena: {}".format(i[0], i[1], i[2]))
+
 
 #Prodej
 def buy_in_shop():
     global utok
     global penize
+    print("V našem obchodě máme následující: ")
+    for i in shop_list:
+        print("Zbraň: {} dmg: +{} cena: {}".format(i[0], i[1], i[2]))
+        
     select_item = int(input ("Co si z toho koupíš? (napiš číslo od 0 do 4) "))
     lengt_of_shop = len(shop_list)
     if select_item > lengt_of_shop:
@@ -82,9 +84,6 @@ def buy_in_shop():
         print(inventory)
 
 #try:
-buy_in_shop()
-print(utok)
-print(penize)
 #except IndexError:
     #print("Posral jsi to! Zadal jsi něco špatně.. zkus to znovu")
    

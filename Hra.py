@@ -1,6 +1,8 @@
 from random import randrange
 import random
 import Funkce
+import Obchod
+
 jmeno_hrdiny = input("Zadej jméno hrdiny: ")
 penize = 0
 zivoty = randrange(10, 31)
@@ -19,7 +21,8 @@ print(f"""Tvůj hrdina se jmenuje {jmeno_hrdiny}, má {zivoty} životů a {peniz
 Nachází se ve městě Lotaru. Je zde kovárna a aréna""")
 cesta = input("Kam chceš jít? (napiš Kovárna nebo arena) ")
 if cesta == "Kovárna":
-    print("Vešel jsi do kovárny. WIP")
+    print("Vešel jsi do kovárny.")
+    Obchod.buy_in_shop()
     
 elif cesta == "arena":
     print("Vítej v aréně!")
