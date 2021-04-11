@@ -9,3 +9,4 @@ def boj(ut, ob, utN, obN):
     if zraneni_enemy < 0:
         zraneni_enemy = 0
     return (zraneni_enemy, zraneni_player)
+
