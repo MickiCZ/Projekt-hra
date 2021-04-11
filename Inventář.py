@@ -1,9 +1,9 @@
 #item list - 0. name, 1. dmg 2. price 3. equipable
-wooden_sword = ["Wooden sword", 5, 100, True]
-stick = ["Stick", 0, 0, False]
-shield = ["Shield", 0, 200, True]
-rock = ["Rock", 0, 0, False]
-inventory_list = [wooden_sword, stick, shield, rock]
+#wooden_sword = ["Wooden sword", 5, 100, True]
+#stick = ["Stick", 0, 0, False]
+#shield = ["Shield", 0, 200, True]
+#rock = ["Rock", 0, 0, False]
+inventory_list = []
 equiped = []
 def inventory():
     inventory_slot = 0

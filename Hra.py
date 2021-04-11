@@ -2,8 +2,11 @@ from random import randrange
 import random
 import Funkce
 import Obchod
+import keyboard
+import Inventář
 
 jmeno_hrdiny = input("Zadej jméno hrdiny: ")
+inventory_list = []
 penize = 0
 zivoty = randrange(10, 31)
 default_hp = zivoty
@@ -11,7 +14,7 @@ xp = 0
 utok = 5
 obrana = 0
 lvl = 1
-krysa = ["Krysa", 1, 0, 10, 10] # 0. jméno, 1. útok, 2. obrana, 3. životy, 4. xp
+krysa = ["Krysa", 1, 0, 10, 10,["krysí ocas", "krysí zub", "krysí bobek"]] # 0. jméno, 1. útok, 2. obrana, 3. životy, 4. xp, 5. loot
 bandita = ["Bandita", 10, 3, 30]
 medved = ["Medvěd", 8, 2, 15]
 nepritel = [krysa]
@@ -19,7 +22,10 @@ nepritel = [krysa]
 
 
 
+
 while zivoty > 0:
+    #if keyboard.read_key() == "i":
+        #Inventář.inventory()
     if xp >= 100: #Zisk nového lvl
         print("Gratuluji získal jsi level.")
         utok += 1
@@ -30,10 +36,10 @@ while zivoty > 0:
 
     print(f"""Tvůj hrdina se jmenuje {jmeno_hrdiny}, je na {lvl}. úrovni. má {zivoty} životů a {penize} penez a {xp} zkušeností.
     Nachází se ve městě Lotaru. Je zde kovárna a aréna""")
-    cesta = input("Kam chceš jít? (napiš Kovárna nebo arena) ")
-    if cesta == "Kovárna":
+    cesta = input("Kam chceš jít? (napiš forge nebo arena) ")
+    if cesta == "forge":
         print("Vešel jsi do kovárny.")
-        Obchod.buy_in_shop()
+        penize = Obchod.buy_in_shop(penize)
         
     elif cesta == "arena":
         print("Vítej v aréně!")
@@ -54,6 +60,8 @@ while zivoty > 0:
                 print("Vyhrál jsi!")
                 penize = penize + 100
                 xp = xp + get_nepritel[4]
+                inventory_list.append(get_nepritel[5][randrange(0, len(get_nepritel[5]))])
+                print(inventory_list)
                 break
         else:
             print("Prohrál jsi!")
