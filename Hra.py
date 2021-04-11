@@ -2,11 +2,12 @@ from random import randrange
 import random
 import Funkce
 import Obchod
-import keyboard
+#import keyboard
 import Inventář
 
 jmeno_hrdiny = input("Zadej jméno hrdiny: ")
 inventory_list = []
+equiped = []
 penize = 0
 zivoty = randrange(10, 31)
 default_hp = zivoty
@@ -36,10 +37,12 @@ while zivoty > 0:
 
     print(f"""Tvůj hrdina se jmenuje {jmeno_hrdiny}, je na {lvl}. úrovni. má {zivoty} životů a {penize} penez a {xp} zkušeností.
     Nachází se ve městě Lotaru. Je zde kovárna a aréna""")
-    cesta = input("Kam chceš jít? (napiš forge nebo arena) ")
-    if cesta == "forge":
+    cesta = input("Kam chceš jít? (napiš forge nebo arena nebo inv) ")
+    if cesta == 'inv':
+    	Inventář.inventory(inventory_list, equiped)
+    elif cesta == "forge":
         print("Vešel jsi do kovárny.")
-        penize = Obchod.buy_in_shop(penize)
+        penize = Obchod.buy_in_shop(penize, inventory_list)
         
     elif cesta == "arena":
         print("Vítej v aréně!")

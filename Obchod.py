@@ -1,6 +1,6 @@
 utok = 0
 obrana = 0
-inventory = []
+
 
 
 #shop list - 0. name, 1. dmg 2. price 3. equipable
@@ -14,7 +14,7 @@ shop_list = [fake_Exit, wooden_sword, rusty_sword, iron_sword, katana, axe]
 
 
 #Prodej
-def buy_in_shop(money):
+def buy_in_shop(money, inventory):
     choice_of_doing = input("Co chceš dělat? (buy/sell/exit)" )
     if choice_of_doing == "buy":
         print(f"Máš tolik {money} a v našem obchodě máme následující: ")
@@ -30,23 +30,21 @@ def buy_in_shop(money):
                 select_item = int(input ("Co si z toho koupíš? (napiš číslo od 1 do 5) "))
         if select_item == 0:
             print("Opustil jsi obchod")
-        return(money)
+            return(money)
+        
         #kontrola zdali má peníze
         if money < shop_list[select_item][2]:
             while select_item > lengt_of_shop or money < shop_list[select_item][2]:
                 print("Na tohle nemáš prachy!")
-                select_item = int(input ("Co si z toho koupíš? (napiš číslo od 0 do 4) "))
-        elif select_item == 1:
+                select_item = int(input ("Co si z toho koupíš? (napiš číslo od 1 do 5) "))
+        if select_item == 1:
             print(f"Koupil sis {shop_list[select_item][0]} ")
-            utok = utok + shop_list[select_item][1]
             money = money - shop_list[select_item][2]
             inventory.append(shop_list[select_item])
             shop_list.pop(select_item)
-            print(penize)
-            print(utok)
+            print(money)
             print(shop_list)
             print(inventory)
-            buy_in_shop()
         elif select_item == 2:
             print(f"Koupil sis {shop_list[select_item][0]} ")
             utok = utok + shop_list[select_item][1]
