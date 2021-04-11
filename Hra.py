@@ -15,7 +15,7 @@ xp = 0
 utok = 5
 obrana = 0
 lvl = 1
-krysa = ["Krysa", 1, 0, 10, 10,["krysí ocas", "krysí zub", "krysí bobek"]] # 0. jméno, 1. útok, 2. obrana, 3. životy, 4. xp, 5. loot
+krysa = ["Krysa", 1, 0, 10, 10,[["krysí ocas", 0, 1, False, "item"], ["krysí zub", 0, 1, False, "item"], ["krysí bobek", 0, 1, False, "item"]]] # 0. jméno, 1. útok, 2. obrana, 3. životy, 4. xp, 5. loot
 bandita = ["Bandita", 10, 3, 30]
 medved = ["Medvěd", 8, 2, 15]
 nepritel = [krysa]
@@ -63,8 +63,9 @@ while zivoty > 0:
                 print("Vyhrál jsi!")
                 penize = penize + 100
                 xp = xp + get_nepritel[4]
-                inventory_list.append(get_nepritel[5][randrange(0, len(get_nepritel[5]))])
-                print(inventory_list)
+                loot = get_nepritel[5][randrange(0, len(get_nepritel[5]))]
+                inventory_list.append(loot)
+                print(f"Získal jsi: {loot[0]}!")
                 break
         else:
             print("Prohrál jsi!")

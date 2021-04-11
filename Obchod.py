@@ -1,14 +1,9 @@
-utok = 0
-obrana = 0
-
-
-
-#shop list - 0. name, 1. dmg 2. price 3. equipable
-wooden_sword = ["Wooden sword", 5, 100, True]
-rusty_sword = ["Rusty sword", 10, 250, True]
-iron_sword = ["Iron sword", 15, 500, True]
-katana = ["Katana", 20, 1000, True]
-axe = ["Axe", 30, 2000, True]
+#shop list - 0. name, 1. dmg 2. price 3. equipable 4. type
+wooden_sword = ["Wooden sword", 5, 100, True, "weapon"]
+rusty_sword = ["Rusty sword", 10, 250, True, "weapon"]
+iron_sword = ["Iron sword", 15, 500, True, "weapon"]
+katana = ["Katana", 20, 1000, True, "weapon"]
+axe = ["Axe", 30, 2000, True, "weapon"]
 fake_Exit = []
 shop_list = [fake_Exit, wooden_sword, rusty_sword, iron_sword, katana, axe]
 
