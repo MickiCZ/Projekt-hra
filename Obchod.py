@@ -1,6 +1,5 @@
 utok = 0
 obrana = 0
-penize = 1000
 inventory = []
 
 #shop list - 0. name, 1. dmg 2. price
