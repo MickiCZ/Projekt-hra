@@ -15,7 +15,9 @@ xp = 0
 utok = 5
 obrana = 0
 lvl = 1
-krysa = ["Krysa", 1, 0, 10, 10,[["krysí ocas", 0, 1, False, "item"], ["krysí zub", 0, 1, False, "item"], ["krysí bobek", 0, 1, False, "item"]]] # 0. jméno, 1. útok, 2. obrana, 3. životy, 4. xp, 5. loot
+
+# 0. jméno, 1. útok, 2. obrana, 3. životy, 4. xp, 5. loot
+krysa = ["Krysa", 1, 0, 10, 50,[["krysí ocas", 0, 1, False, "item"], ["krysí zub", 0, 1, False, "item"], ["krysí bobek", 0, 1, False, "item"]]]
 bandita = ["Bandita", 10, 3, 30]
 medved = ["Medvěd", 8, 2, 15]
 nepritel = [krysa]
@@ -25,21 +27,15 @@ nepritel = [krysa]
 
 
 while zivoty > 0:
-    #if keyboard.read_key() == "i":
-        #Inventář.inventory()
     if xp >= 100: #Zisk nového lvl
-        print("Gratuluji získal jsi level.")
-        utok += 1
-        zivoty += 5
-        lvl += 1
-        xp -= 100
-        print(f"Aktuálně máš {lvl}. úroveň, útok: {utok}, {zivoty} životů a {xp} zkušeností.")
+       (utok, zivoty, lvl, xp) = Funkce.level_up(xp, zivoty, utok, lvl)
 
-    print(f"""Tvůj hrdina se jmenuje {jmeno_hrdiny}, je na {lvl}. úrovni. má {zivoty} životů a {penize} penez a {xp} zkušeností.
+    print(f"""Tvůj hrdina se jmenuje {jmeno_hrdiny}, je na {lvl}. úrovni. aktuálně má {zivoty} životů z maximálních {default_hp} životů, {penize} peněz a {xp} zkušeností.
     Nachází se ve městě Lotaru. Je zde kovárna a aréna""")
     cesta = input("Kam chceš jít? (napiš forge nebo arena nebo inv) ")
     if cesta == 'inv':
     	Inventář.inventory(inventory_list, equiped)
+
     elif cesta == "forge":
         print("Vešel jsi do kovárny.")
         penize = Obchod.buy_in_shop(penize, inventory_list)

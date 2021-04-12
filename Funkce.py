@@ -10,3 +10,12 @@ def boj(ut, ob, utN, obN):
         zraneni_enemy = 0
     return (zraneni_enemy, zraneni_player)
 
+def level_up(xp,hp,atck,lvl):
+    print("Gratuluji získal jsi level.")
+    atck += 1
+    hp += 5
+    lvl += 1
+    xp -= 100
+    print(f"Aktuálně máš {lvl}. úroveň, útok: {atck}, {hp} životů a {xp} zkušeností.")
+    return (atck, hp, lvl, xp)
+
