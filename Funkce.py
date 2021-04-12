@@ -25,10 +25,11 @@ def level_up(xp,hp,atck,lvl,):
     print("Gratuluji získal jsi level.")
     atck += 1
     hp += 5
+    a_hp = hp
     lvl += 1
     xp -= 100
     print(f"Aktuálně máš {lvl}. úroveň, útok: {atck}, {hp} životů a {xp} zkušeností.")
-    return (atck, hp, lvl, xp)
+    return (atck, hp, lvl, xp, a_hp)
 
 def fight(enemy_list, player_hp, player_atc, player_def, player_name, player_xp, player_inventory):
     get_enemy = random.choice(enemy_list)
