@@ -36,7 +36,7 @@ def level_up(xp,hp,atck,lvl,):
 
 
 #Funkce souboje v aréně
-def fight(enemy_list, player_hp, player_atc, player_def, player_name, player_xp, player_inventory):
+def fight(enemy_list, player_hp, player_atc, player_def, player_name, player_xp, player_inventory, money,):
     get_enemy = random.choice(enemy_list)
     enemy_name = get_enemy[0]
     print(f"{player_name} bojuje proti {get_enemy[0]}")
@@ -46,6 +46,7 @@ def fight(enemy_list, player_hp, player_atc, player_def, player_name, player_xp,
     enemy_loot = get_enemy[5][randrange(0, len(get_enemy[5]))]
     enemy_xp = get_enemy[4]
     xp = player_xp
+    loot_money = money
     
     while player_hp > 0:
         if enemy_hp > 0:
@@ -61,10 +62,11 @@ def fight(enemy_list, player_hp, player_atc, player_def, player_name, player_xp,
             xp = player_xp + enemy_xp
             player_inventory.append(enemy_loot)
             print(f"Získal jsi {enemy_loot[0]}")
+            loot_money = money + 20
             break
     else:
         print("Prohrál jsi!")
-    return(player_hp, xp, player_inventory)
+    return(player_hp, xp, player_inventory, loot_money)
 #fight(nepritel, 50, 10, 0, "Walak", xp, inventory)
 
 
@@ -91,20 +93,40 @@ def tavern(money, def_hp, act_hp):
 
 
 #Fungování inventáře
-def inventory(inv, eqp):
+def inventory(inv, eqp, dmg):
     inventory_slot = 0
     item_summarize = ""
+    equip_summarize = ""
+    add_dmg = dmg
+    for i in inv:
+        if i[4] == "weapon":
+            item_summarize = item_summarize + i[0] + " " + "+" + str(i[1]) +"Dmg, "
+        else:
+            item_summarize = item_summarize + i[0] + ", "
+    for i in eqp:
+        if i[4] == "weapon":
+            equip_summarize = equip_summarize + i[0] + " " + "+" + str(i[1]) +"Dmg, "
+        else:
+            equip_summarize = equip_summarize + i[0] + ", "
+    print(f"V inventáří máš: {item_summarize}a equipnuto máš: {equip_summarize}")
     for i in inv:
         if i[3] == True:
-            print(i)
+            print(i[0])
             want_equip = input("Chceš si to vybavit? (y/n) ")
             if want_equip == "y":
                 eqp.append(i)
                 inv.pop(inventory_slot)
+                add_dmg = dmg + i[1]
         inventory_slot += 1
     for i in inv:
         if i[4] == "weapon":
             item_summarize = item_summarize + i[0] + " " + "+" + str(i[1]) +"Dmg, "
         else:
             item_summarize = item_summarize + i[0] + ", "
-    print(f"V inventáří máš: {item_summarize}a equipnuto máš: {eqp}")
+    for i in eqp:
+        if i[4] == "weapon":
+            equip_summarize = equip_summarize + i[0] + " " + "+" + str(i[1]) +"Dmg, "
+        else:
+            equip_summarize = equip_summarize + i[0] + ", "
+    print(f"V inventáří máš: {item_summarize}a equipnuto máš: {equip_summarize}")
+    return(add_dmg)

@@ -13,76 +13,57 @@ def buy_in_shop(money, inventory):
     choice_of_doing = input("Co chceš dělat? (buy/sell/exit)" )
     item_position = 0
     if choice_of_doing == "buy":
-        print(f"Máš tolik {money} a v našem obchodě máme následující: ")
-        for i in shop_list:
-            if i != fake_Exit:
-                item_position += 1
-                print("{}. Zbraň: {} dmg: +{} cena: {}".format(item_position, i[0], i[1], i[2]))
+        while len(shop_list) > 0:
+            print(f"Máš tolik {money} a v našem obchodě máme následující: ")
+            for i in shop_list:
+                if i != fake_Exit:
+                    item_position += 1
+                    print("{}. Zbraň: {} dmg: +{} cena: {}".format(item_position, i[0], i[1], i[2]))
+                
+            select_item = int(input ("Co si z toho koupíš? (napiš číslo od 1 do 5 nebo 0 pro odchod) "))
+            lengt_of_shop = len(shop_list)
+            if select_item > lengt_of_shop:
+                while select_item > lengt_of_shop:
+                    print("Toto není v nabídce!")
+                    select_item = int(input ("Co si z toho koupíš? (napiš číslo od 1 do 5) "))
+            if select_item == 0:
+                print("Opustil jsi obchod")
+                return(money)
             
-        select_item = int(input ("Co si z toho koupíš? (napiš číslo od 1 do 5 nebo 0 pro odchod) "))
-        lengt_of_shop = len(shop_list)
-        if select_item > lengt_of_shop:
-            while select_item > lengt_of_shop:
-                print("Toto není v nabídce!")
-                select_item = int(input ("Co si z toho koupíš? (napiš číslo od 1 do 5) "))
-        if select_item == 0:
-            print("Opustil jsi obchod")
-            return(money)
-        
-        #kontrola zdali má peníze
-        if money < shop_list[select_item][2]:
-            while select_item > lengt_of_shop or money < shop_list[select_item][2]:
-                print("Na tohle nemáš prachy!")
-                select_item = int(input ("Co si z toho koupíš? (napiš číslo od 1 do 5) "))
-        if select_item == 1:
-            print(f"Koupil sis {shop_list[select_item][0]} ")
-            money = money - shop_list[select_item][2]
-            inventory.append(shop_list[select_item])
-            shop_list.pop(select_item)
-            print(money)
-            print(shop_list)
-            print(inventory)
-        elif select_item == 2:
-            print(f"Koupil sis {shop_list[select_item][0]} ")
-            utok = utok + shop_list[select_item][1]
-            penize = penize - shop_list[select_item][2]
-            inventory.append(shop_list[select_item])
-            shop_list.pop(select_item)
-            print(penize)
-            print(utok)
-            print(shop_list)
-            print(inventory)
-        elif select_item == 3:
-            print(f"Koupil sis {shop_list[select_item][0]} ")
-            utok = utok + shop_list[select_item][1]
-            penize = penize - shop_list[select_item][2]
-            inventory.append(shop_list[select_item])
-            shop_list.pop(select_item)
-            print(penize)
-            print(utok)
-            print(shop_list)
-            print(inventory)
-        elif select_item == 4:
-            print(f"Koupil sis {shop_list[select_item][0]} ")
-            utok = utok + shop_list[select_item][1]
-            penize = penize - shop_list[select_item][2]
-            inventory.append(shop_list[select_item])
-            shop_list.pop(select_item)
-            print(penize)
-            print(utok)
-            print(shop_list)
-            print(inventory)
-        elif select_item == 5:
-            print(f"Koupil sis {shop_list[select_item][0]} ")
-            utok = utok + shop_list[select_item][1]
-            penize = penize - shop_list[select_item][2]
-            inventory.append(shop_list[select_item])
-            shop_list.pop(select_item)
-            print(penize)
-            print(utok)
-            print(shop_list)
-            print(inventory)
-        return (money)
+            #kontrola zdali má peníze
+            if money < shop_list[select_item][2]:
+                while select_item > lengt_of_shop or money < shop_list[select_item][2]:
+                    print("Na tohle nemáš prachy!")
+                    select_item = int(input ("Co si z toho koupíš? (napiš číslo od 1 do 5) "))
+            if select_item == 1:
+                print(f"Koupil sis {shop_list[select_item][0]} ")
+                money = money - shop_list[select_item][2]
+                inventory.append(shop_list[select_item])
+                shop_list.pop(select_item)
+                #print(money)
+                #print(shop_list)
+                #print(inventory)
+            elif select_item == 2:
+                print(f"Koupil sis {shop_list[select_item][0]} ")
+                money = money - shop_list[select_item][2]
+                inventory.append(shop_list[select_item])
+                shop_list.pop(select_item)
+            elif select_item == 3:
+                print(f"Koupil sis {shop_list[select_item][0]} ")
+                money = money - shop_list[select_item][2]
+                inventory.append(shop_list[select_item])
+                shop_list.pop(select_item)
+            elif select_item == 4:
+                print(f"Koupil sis {shop_list[select_item][0]} ")
+                money = money - shop_list[select_item][2]
+                inventory.append(shop_list[select_item])
+                shop_list.pop(select_item)
+            elif select_item == 5:
+                print(f"Koupil sis {shop_list[select_item][0]} ")
+                money = money - shop_list[select_item][2]
+                inventory.append(shop_list[select_item])
+                shop_list.pop(select_item)
+            return (money)
     elif choice_of_doing == "sell":
         print("Sorry!! WIP!!")
     
