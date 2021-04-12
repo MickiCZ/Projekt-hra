@@ -11,11 +11,13 @@ shop_list = [fake_Exit, wooden_sword, rusty_sword, iron_sword, katana, axe]
 #Prodej
 def buy_in_shop(money, inventory):
     choice_of_doing = input("Co chceš dělat? (buy/sell/exit)" )
+    item_position = 0
     if choice_of_doing == "buy":
         print(f"Máš tolik {money} a v našem obchodě máme následující: ")
         for i in shop_list:
             if i != fake_Exit:
-                print("Zbraň: {} dmg: +{} cena: {}".format(i[0], i[1], i[2]))
+                item_position += 1
+                print("{}. Zbraň: {} dmg: +{} cena: {}".format(item_position, i[0], i[1], i[2]))
             
         select_item = int(input ("Co si z toho koupíš? (napiš číslo od 1 do 5 nebo 0 pro odchod) "))
         lengt_of_shop = len(shop_list)
@@ -84,7 +86,7 @@ def buy_in_shop(money, inventory):
     elif choice_of_doing == "sell":
         print("Sorry!! WIP!!")
     
-        
+    
 #penize = buy_in_shop(1000)
 #print("Na konci obchodování máš tolik peněz: ", penize)
 #try:
